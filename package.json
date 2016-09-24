@@ -1,0 +1,27 @@
+{
+  "name": "node-crud",
+  "version": "1.0.0",
+  "description": "Basic CRUD operation uisng express and mongo",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://a.com"
+  },
+  "keywords": [
+    "Node",
+    "express",
+    "mongo",
+    "CRUD"
+  ],
+  "author": "Debajit Majumder",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.2"
+  }
+}
