@@ -1,2 +1,23 @@
 <h1>First Node Application</h1>
 <hr/>
+<form class="row input-wrapper" action="/users" method="POST">
+	<div class="col-xs-12">
+		<div class="input-group">
+	      	<input type="text" class="form-control" placeholder="Name" name="name">
+	      	<input type="text" class="form-control" placeholder="Address" name="address">
+	      	<span class="input-group-btn">
+	        	<button class="btn btn-default" type="submit">Add</button>
+	      	</span>
+	    </div>
+	</div>
+</form>
+<div class="row list-wrapper">
+	<ul class="users">
+	  	<% for(var i=0; i<users.length; i++) {%>
+	    	<li class="user">
+	      		<span><%= users[i].name %></span>
+	      		<span><%= users[i].address %></span>
+	    	</li>
+	  	<% } %>
+	</ul>
+</div>
