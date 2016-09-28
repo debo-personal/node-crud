@@ -1,31 +1,36 @@
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="main.js"></script>
-<div class="container-fluid">
-	<h1>First Node Application</h1>
-	<hr/>
-	<form class="row input-wrapper form-inline" action="/users" method="POST">
-		<div class="form-group col-xs-5">
-	      	<input type="text" class="form-control" placeholder="Name" name="name">
-	    </div>
-	    <div class="form-group col-xs-5">
-	      	<input type="text" class="form-control" placeholder="Address" name="address">
-	    </div>
-	  	<div class="form-group col-xs-2">
-	    	<button class="btn btn-default" type="submit">Add</button>
-	  	</div>
-	</form>
-	<div class="row list-wrapper">
-		<ul class="users">
-		  	<% for(var i=0; i<users.length; i++) {%>
-		    	<li class="user">
-		      		<span><%= users[i].name %></span>
-		      		<span><%= users[i].address %></span>
-		      		<a href="javscript:void(0)" onclick="updateUser('<%= users[i].name %>')">Update</a>
-		      		<a href="javscript:void(0)" onclick="deboNS.user.deleteUser('<%= users[i].name %>')">Delete</a>
-		    	</li>
-		  	<% } %>
-		</ul>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="main.js"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<h1>First Node Application</h1>
+		<hr/>
+		<form class="row input-wrapper form-inline" action="/users" method="POST">
+			<div class="form-group col-xs-5">
+		      	<input type="text" class="form-control" placeholder="Name" name="name">
+		    </div>
+		    <div class="form-group col-xs-5">
+		      	<input type="text" class="form-control" placeholder="Address" name="address">
+		    </div>
+		  	<div class="form-group col-xs-2">
+		    	<button class="btn btn-default" type="submit">Add</button>
+		    	<button class="btn btn-default hidden" type="submit">Update</button>
+		  	</div>
+		</form>
+		<div class="row list-wrapper">
+			<ul class="users">
+			  	<% for(var i=0; i<users.length; i++) {%>
+			    	<li class="user">
+			      		<span><%= users[i].name %></span>
+			      		<span><%= users[i].address %></span>
+			      		<a href="javscript:void(0)" onclick="deboNS.user.updateUser('<%= users[i].name %>')">Update</a>
+			      		<a href="javscript:void(0)" onclick="deboNS.user.deleteUser('<%= users[i].name %>')">Delete</a>
+			    	</li>
+			  	<% } %>
+			</ul>
+		</div>
 	</div>
-</div>
+</body>

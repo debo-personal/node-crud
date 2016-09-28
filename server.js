@@ -60,10 +60,33 @@ app.post('/users', (req, res) => {
 });
 
 app.delete('/users', (req, res) => {
+	/* findOneAndDelete( query, options, callback ) */
 	db.collection('users').findOneAndDelete({name: req.body.name},{},( err, result) => {
 		if( err ) {
 			return res.send( 500, err );
 		}
 		res.send('Deleted');
 	});
+});
+
+app.put('/users', (req, res) => {
+	/* findOneAndUpdate( query, update, options, callback ) */
+	db.collection('users').findOneAndUpdate({name: req.body.name},
+		{
+			$set: {
+				name: 'uName',
+				address: 'uAddress' // for now I am setting this hard coded, we can take this from client side in request body.
+			}
+		},
+		{
+			sort: {_id:-1}, // This allows mongo db to search through databases, starting from newest entry for the given query
+			upsert: true // This is for update or insert, if no entries forund for the given query, then insert a new entry
+		},
+		(err, result) => {
+			if( err ) {
+				return res.send( 500, err );
+			}
+			res.send( result );
+		}
+	);
 });
